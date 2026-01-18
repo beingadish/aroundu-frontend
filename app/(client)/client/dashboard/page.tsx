@@ -205,7 +205,11 @@ export default function ClientDashboardPage() {
                     <div className="grid gap-3 md:grid-cols-2">
                         <div>
                             <div className="label">Urgency</div>
-                            <select className="select" value={jobForm.jobUrgency} onChange={(e) => setJobForm({ ...jobForm, jobUrgency: e.target.value })}>
+                            <select
+                                className="select"
+                                value={jobForm.jobUrgency}
+                                onChange={(e) => setJobForm({ ...jobForm, jobUrgency: e.target.value as JobUrgency })}
+                            >
                                 {jobUrgencyOptions.map((u) => (
                                     <option key={u}>{u}</option>
                                 ))}
@@ -213,7 +217,11 @@ export default function ClientDashboardPage() {
                         </div>
                         <div>
                             <div className="label">Payment mode</div>
-                            <select className="select" value={jobForm.paymentMode} onChange={(e) => setJobForm({ ...jobForm, paymentMode: e.target.value })}>
+                            <select
+                                className="select"
+                                value={jobForm.paymentMode}
+                                onChange={(e) => setJobForm({ ...jobForm, paymentMode: e.target.value as PaymentMode })}
+                            >
                                 {paymentModeOptions.map((p) => (
                                     <option key={p}>{p}</option>
                                 ))}

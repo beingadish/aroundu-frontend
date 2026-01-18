@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { login } from "../../../services/auth";
 import type { Role } from "../../../types/auth";
 import { useAuth } from "../../../components/layout/AuthProvider";
 
-export default function LoginPage() {
+function LoginPageInner() {
     const [role, setRole] = useState<Role>("CLIENT");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -111,5 +111,13 @@ export default function LoginPage() {
                 </ul>
             </div>
         </div>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={<div className="card p-6">Loading login...</div>}>
+            <LoginPageInner />
+        </Suspense>
     );
 }
